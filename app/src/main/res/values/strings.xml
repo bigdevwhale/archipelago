@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Archipelago</string>
+    <string name="tab_chart">Chart</string>
+    <string name="tab_sortie">Sortie</string>
+    <string name="tab_atlas">Atlas</string>
+    <string name="tab_log">Log</string>
+</resources>

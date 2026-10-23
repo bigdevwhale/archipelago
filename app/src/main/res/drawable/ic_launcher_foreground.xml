@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A stone bridge between two islands, a lantern lit on top, a pennant for a year. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- lantern glow -->
+    <path android:fillColor="#40E2A43A" android:pathData="M54,25 A12,12 0 1 1 53.99,25 Z" />
+    <!-- islands -->
+    <path android:fillColor="#FFEFE3C6" android:pathData="M14,71 C16,62 24,57 33,57 C37,57 39,59 40,61 L40,71 Z" />
+    <path android:fillColor="#FFEFE3C6" android:pathData="M94,71 C92,62 84,57 75,57 C71,57 69,59 68,61 L68,71 Z" />
+    <!-- the bridge: a deck and a body with two arches -->
+    <path android:fillColor="#FFEFE3C6" android:pathData="M31,58 Q54,40 77,58 L77,63 Q54,46 31,63 Z" />
+    <path android:fillColor="#FFEFE3C6" android:fillType="evenOdd"
+        android:pathData="M35,61 Q54,47 73,61 L73,71 L35,71 Z M41,71 V65 A5.5,5.5 0 0 1 52,65 V71 Z M56,71 V65 A5.5,5.5 0 0 1 67,65 V71 Z" />
+    <!-- stone joints -->
+    <path android:strokeColor="#FF33291D" android:strokeWidth="0.9"
+        android:pathData="M38,59.5 V62 M44,56.5 V59 M50,54.8 V57.3 M58,54.8 V57.3 M64,56.5 V59 M70,59.5 V62" />
+    <!-- lantern -->
+    <path android:strokeColor="#FFEFE3C6" android:strokeWidth="1.8" android:pathData="M54,50 V40" />
+    <path android:fillColor="#FFE2A43A" android:pathData="M50.8,31 H57.2 V40 H50.8 Z" />
+    <path android:fillColor="#FFEFE3C6" android:pathData="M49.5,31.5 L54,27 L58.5,31.5 Z M50,40 H58 V41.6 H50 Z" />
+    <!-- pennant -->
+    <path android:strokeColor="#FFEFE3C6" android:strokeWidth="1.5" android:pathData="M24,60 V45" />
+    <path android:fillColor="#FFD0573C" android:pathData="M24,45 L33,48 L24,51 Z" />
+    <!-- water -->
+    <path android:strokeColor="#99EFE3C6" android:strokeWidth="1.5" android:strokeLineCap="round"
+        android:pathData="M20,77 q4,-3 8,0 q4,3 8,0 q4,-3 8,0 q4,3 8,0 q4,-3 8,0 q4,3 8,0 q4,-3 8,0 q4,3 8,0" />
+    <path android:strokeColor="#55EFE3C6" android:strokeWidth="1.5" android:strokeLineCap="round"
+        android:pathData="M32,84 q4,-3 8,0 q4,3 8,0 q4,-3 8,0 q4,3 8,0 q4,-3 8,0" />
+</vector>
