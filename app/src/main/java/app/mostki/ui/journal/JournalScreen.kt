@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.HorizontalDivider
@@ -64,7 +65,7 @@ fun JournalScreen(h: Home, nav: Nav) {
     val w = h.w
     val list = remember(h.s, w.ru) { entries(h.s, w) }
     val groups = remember(list, h.today) { list.groupBy { it.at.date(h.zone) }.entries.toList() }
-    Column(Modifier.fillMaxSize()) {
+    Column(Modifier.fillMaxSize().statusBarsPadding()) {
         Heading(w.t("Судовой журнал", "Ship's log"), w.t("С кем и когда — день за днём, год за годом.", "Who you spoke with and when — day by day, year by year."))
         if (list.isEmpty()) Text(w.t("Журнал пуст. Первая запись появится после первой вылазки или первого острова.", "The log is empty. The first line comes with your first sortie or island."),
             style = T.Note, modifier = Modifier.padding(18.dp))

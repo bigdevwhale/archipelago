@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -52,7 +53,7 @@ fun SortieScreen(h: Home, nav: Nav) {
     val r = Tasks.rungs.getOrNull(rung)
     val today = s.sorties.count { java.time.Instant.ofEpochMilli(it.at).atZone(h.zone).toLocalDate() == h.today }
 
-    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
+    Column(Modifier.fillMaxSize().statusBarsPadding().verticalScroll(rememberScrollState())) {
         Heading(w.t("Вылазка", "Sortie"), w.t("Один маленький шаг к людям.", "One small step towards people."))
         Column(Modifier.padding(horizontal = 18.dp)) {
             Gap(8)

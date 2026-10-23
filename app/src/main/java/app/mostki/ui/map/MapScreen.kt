@@ -4,6 +4,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -91,6 +93,7 @@ fun MapScreen(h: Home, nav: Nav) {
     val sc = scene(h)
     val scene by rememberUpdatedState(sc)
     val dp = LocalDensity.current.density
+    val top = WindowInsets.statusBars.getTop(LocalDensity.current).toFloat()
     val ctx = LocalContext.current
     ChartArt.fonts(ctx)
     var size by remember { mutableStateOf(IntSize.Zero) }
@@ -128,7 +131,7 @@ fun MapScreen(h: Home, nav: Nav) {
                         onDoubleTap = { view = null; fitFor = -1 },
                     )
                 },
-        ) { c, cw, ch -> view?.let { ChartArt.draw(c, cw, ch, sc, it, time, dp) } }
+        ) { c, cw, ch -> view?.let { ChartArt.draw(c, cw, ch, sc, it, time, dp, top) } }
 
         Column(Modifier.statusBarsPadding().padding(start = 14.dp, top = 12.dp).widthIn(max = 250.dp).ruled(C.light).padding(horizontal = 14.dp, vertical = 8.dp),
             horizontalAlignment = Alignment.CenterHorizontally) {

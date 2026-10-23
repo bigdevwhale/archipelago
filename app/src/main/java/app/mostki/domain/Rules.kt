@@ -154,7 +154,7 @@ object Chart {
                 // Two islands on the very same spot: part them along a bearing of their own.
                 if (abs(dx) + abs(dy) < .5f) { dx = cos(b * 2.4).toFloat(); dy = sin(b * 2.4).toFloat() }
                 val d = hypot(dx, dy).coerceAtLeast(.01f)
-                val want = r.getValue(pts[a].first) + r.getValue(pts[b].first) + 46f
+                val want = r.getValue(pts[a].first) + r.getValue(pts[b].first) + 58f
                 if (d < want) {
                     val push = (want - d) / 2 / d
                     p[0] -= dx * push; p[1] -= dy * push

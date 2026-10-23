@@ -106,7 +106,8 @@ object ChartArt {
         return null
     }
 
-    fun draw(c: Canvas, w: Float, h: Float, scene: Scene, v: View, time: Double, dp: Float) {
+    /** [top] is the status bar height to keep the compass under; a negative one leaves the compass out. */
+    fun draw(c: Canvas, w: Float, h: Float, scene: Scene, v: View, time: Double, dp: Float, top: Float = 0f) {
         fill.shader = null
         fill.color = Ink.PAPER
         c.drawRect(0f, 0f, w, h, fill)
@@ -130,7 +131,7 @@ object ChartArt {
         text.typeface = italic; text.textSize = 18f; text.color = Ink.a(Ink.MUTED, .9f)
         c.drawText(scene.fogText, 0f, scene.fog * 1.16f + 40f, text)
         c.restore()
-        compass(c, w - 52f * dp, 62f * dp, 30f * dp, scene.north)
+        if (top >= 0) compass(c, w - 52f * dp, top + 58f * dp, 30f * dp, scene.north)
     }
 
     private fun hash(a: Int, b: Int): Int {
@@ -224,11 +225,11 @@ object ChartArt {
         land(c, coast(i.id, i.r), i.x, i.y, selected)
         val k = (i.r / 38f).coerceIn(.8f, 1.15f)
         i.traits.take(4).forEachIndexed { n, t -> Glyphs.draw(c, t, i.x + OFFS[n * 2] * i.r * 1.15f, i.y + OFFS[n * 2 + 1] * i.r * 1.15f, k, paper = Ink.PAPER) }
-        text.typeface = hand; text.textSize = 27f; text.color = Ink.INK
-        c.drawText(i.name, i.x, i.y + i.r + 24f, text)
+        text.typeface = hand; text.textSize = 33f; text.color = Ink.INK
+        c.drawText(i.name, i.x, i.y + i.r + 28f, text)
         if (i.hint != null) {
-            text.typeface = italic; text.textSize = 12.5f; text.color = if (i.warn) Ink.RED else Ink.MUTED
-            c.drawText(i.hint, i.x, i.y + i.r + 41f, text)
+            text.typeface = italic; text.textSize = 15f; text.color = if (i.warn) Ink.RED else Ink.MUTED
+            c.drawText(i.hint, i.x, i.y + i.r + 47f, text)
         }
         if (i.sea == Sea.NEW) {
             val bob = (sin(time * 3.2 + i.id) * 2.5).toFloat()
@@ -262,8 +263,8 @@ object ChartArt {
         land(c, p, 0f, 0f, false)
         Glyphs.house(c, -16f, 8f, 1.5f)
         Glyphs.lighthouse(c, 15f, -8f, 1.6f, scene.lit)
-        text.typeface = hand; text.textSize = 30f; text.color = Ink.RED
-        c.drawText(scene.me, 0f, Chart.ME_R + 30f, text)
+        text.typeface = hand; text.textSize = 36f; text.color = Ink.RED
+        c.drawText(scene.me, 0f, Chart.ME_R + 34f, text)
     }
 
     private fun quad(ax: Float, ay: Float, cx: Float, cy: Float, bx: Float, by: Float, t: Float, out: FloatArray) {

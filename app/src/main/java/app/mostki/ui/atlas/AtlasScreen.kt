@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
@@ -52,7 +53,7 @@ fun AtlasScreen(h: Home, nav: Nav) {
     val w = h.w
     val s = h.s
     val done = Expedition.entries.count { it.done(s, h.zone) }
-    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
+    Column(Modifier.fillMaxSize().statusBarsPadding().verticalScroll(rememberScrollState())) {
         Heading(w.t("Атлас", "Atlas"), w.t("Гавани, экспедиции и годы на карте.", "Harbours, expeditions and the years on the chart."))
         Column(Modifier.padding(horizontal = 18.dp)) {
             val total = s.contacts.sumOf { it.minutes }
@@ -130,10 +131,13 @@ fun AtlasScreen(h: Home, nav: Nav) {
             val years = Years.summaries(s, h.zone)
             if (years.isNotEmpty()) {
                 Section(w.t("Годы", "The years"), w.t("Карта ведётся годами. Вот как они прошли.", "A chart is kept for years. Here's how they went."))
-                for (y in years) {
+                var all by remember { mutableStateOf(false) }
+                for (y in if (all) years else years.take(3)) {
                     YearCard(h, y)
                     Gap(10)
                 }
+                if (!all && years.size > 3) LineButton(w.t("Ещё ${years.size - 3} ${w.plural(years.size - 3, "год", "года", "лет")}", if (years.size - 3 == 1) "One more year" else "${years.size - 3} more years"),
+                    Modifier.fillMaxWidth(), dashed = true) { all = true }
             }
             Gap(24)
         }

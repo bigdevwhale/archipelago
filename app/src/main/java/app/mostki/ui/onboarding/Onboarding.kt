@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -81,10 +82,10 @@ fun Onboarding(w: Words, replay: (() -> Unit)? = null) {
 
     @Composable
     fun picture(s: Scene, h: Int) = NativeCanvas(Modifier.fillMaxWidth().height(h.dp)) { cv, cw, ch ->
-        ChartArt.draw(cv, cw, ch, s, ChartArt.fit(s, cw, ch), time, dp)
+        ChartArt.draw(cv, cw, ch, s, ChartArt.fit(s, cw, ch), time, dp, top = -1f)
     }
 
-    Column(Modifier.fillMaxSize().paper()) {
+    Column(Modifier.fillMaxSize().paper().statusBarsPadding()) {
         Heading(w.t("Мостки", "Archipelago"), w.t("${page + 1} из $PAGES", "${page + 1} of $PAGES"))
         Column(Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = 18.dp)) {
             when (page) {

@@ -183,7 +183,7 @@ fun Sheet(title: String?, close: String, onClose: () -> Unit, content: @Composab
 /** The title strip of a tab: a name in print and a line under it. */
 @Composable
 fun Heading(title: String, sub: String? = null, end: @Composable RowScope.() -> Unit = {}) {
-    Row(Modifier.fillMaxWidth().statusBarsPadding().padding(start = 18.dp, end = 8.dp, top = 10.dp, bottom = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+    Row(Modifier.fillMaxWidth().padding(start = 18.dp, end = 8.dp, top = 10.dp, bottom = 4.dp), verticalAlignment = Alignment.CenterVertically) {
         Column(Modifier.weight(1f)) {
             Text(title, style = T.Display)
             if (sub != null) Text(sub, style = T.Note)
