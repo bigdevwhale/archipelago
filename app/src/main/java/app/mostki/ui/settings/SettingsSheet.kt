@@ -27,6 +27,7 @@ import app.mostki.notify.Nudge
 import app.mostki.ui.Home
 import app.mostki.ui.Nav
 import app.mostki.ui.components.Chip
+import app.mostki.ui.components.CommunityLinks
 import app.mostki.ui.components.Flow
 import app.mostki.ui.components.Gap
 import app.mostki.ui.components.LineButton
@@ -103,6 +104,11 @@ fun SettingsSheet(h: Home, nav: Nav) {
 
         Section(w.t("Как это устроено", "How it works"))
         LineButton(w.t("Показать знакомство с картой", "Show the welcome pages"), Modifier.fillMaxWidth(), dashed = true) { nav.open(app.mostki.ui.Overlay.Intro) }
+
+        Section(w.t("Сообщество", "Community"),
+            w.t("Приложение делается вместе с теми, кто им пользуется. Всё идёт через бота StillCraft в Telegram.",
+                "The app is made together with the people who use it. It all goes through the StillCraft bot on Telegram."))
+        CommunityLinks(w)
 
         Section(w.t("О «Мостках»", "About Archipelago"))
         Text(w.t("Приложение не ищет тебе людей — оно отправляет тебя к ним и помогает возвращаться. Пороги мостов — 50, 90 и 200 часов — из исследования Джеффри Холла (2018) о том, сколько времени нужно, чтобы подружиться.",
